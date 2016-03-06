@@ -19,9 +19,11 @@ const int RGB_led_B = 51;
 const int pin_button_reset = 30;
 const int pin_button_A_add = 31;
 const int pin_button_A_remove = 32;
-const int pin_button_B_remove = 33;
-const int pin_button_ = 34;
+const int pin_button_B_add = 33;
+const int pin_button_B_remove = 34;
 const int pin_servo = 8
+
+int button_temp_value;
 
 
 
@@ -58,6 +60,8 @@ void loop() {
   
   scoring_state_machine(side_A, side_B, time_out);
   serving_state();
+
+  buttons_controller();
 }
 
 void scoring_state_machine(int side_A, int side_B, boolean time_out) {
@@ -239,8 +243,36 @@ void update_serving_player() {
   }
 }
 
-void add_score_A() {
-  soc
+void buttons_controller() {
+  //pin_button_reset
+  button_temp_value = digital_read(pin_button_reset)
+  if (button_temp_value == HIGH) {
+    reset_game();
+  }
+  
+  //pin_button_A_add
+  button_temp_value = digital_read(pin_button_A_add)
+  if (button_temp_value == HIGH) {
+    score_A += 1;
+  }
+  
+  //pin_button_A_remove
+  button_temp_value = digital_read(pin_button_A_remove)
+  if (button_temp_value == HIGH) {
+    score_A -= 1;
+  }
+  
+  //pin_button_B_add
+  button_temp_value = digital_read(pin_button_B_add)
+  if (button_temp_value == HIGH) {
+    score_B += 1;
+  }
+  
+  //pin_button_B_remove
+  button_temp_value = digital_read(pin_button_B_remove)
+  if (button_temp_value == HIGH) {
+    score_B -= 1;
+  }
 }
 
 void reset_game() {
