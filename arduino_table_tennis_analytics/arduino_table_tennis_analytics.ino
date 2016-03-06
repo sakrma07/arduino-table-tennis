@@ -11,14 +11,22 @@ const int serving_player_NA = 0; // N/A
 const int player_A = 1;
 const int player_B = 2;
 
+// pins
+const int side_sensor_A = 6;
+const int side_sensor_B = 7;
+const int RGB_led_A = 53;
+const int RGB_led_B = 51;
+const int pin_button_reset = 30;
+const int pin_button_A_add = 31;
+const int pin_button_A_remove = 32;
+const int pin_button_B_remove = 33;
+const int pin_button_ = 34;
+const int pin_servo = 8
+
+
 
 int state = state_none;
 
-int side_sensor_A = 6;
-int side_sensor_B = 7;
-
-int RGB_led_A = 53;
-int RGB_led_B = 51;
 
 unsigned long last_table_hit = 0;    
 
@@ -227,6 +235,10 @@ void update_serving_player() {
       serving_player = player_A;
     }
   }
+}
+
+void add_score_A() {
+  soc
 }
 
 void reset_game() {
